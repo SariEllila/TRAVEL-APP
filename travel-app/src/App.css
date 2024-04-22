@@ -32,3 +32,21 @@
   margin-top: 1%;
   width: 95%;
 }
+
+
+.quiz-link-text {
+  padding: 5%;
+  border-bottom: grey solid 0.4px;
+}
+
+.quiz-link-text span {
+  color: pink;
+  text-decoration: underline;
+}
+
+
+.news-weather-container {
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 1;
+}
