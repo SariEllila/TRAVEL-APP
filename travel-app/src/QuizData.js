@@ -4,100 +4,74 @@ export default [
     {
       id: 1,
       question: "What type of climate do you like?",
-      answers: [
-        {
-          answer1: "As hot as possible!", // Fukuoka
-          answer2: "A nice breeze on a hot day", // Tottori
-          answer3: "Nothing over 25 degrees please!", // Aomori
-          answer4: "As chilly as can be", // Hokkaido
-          answer5: "A mild, comfortable temperature", // Hiroshima
-          answer6: "Cool wind and varying weather", // Osaka
-          answer7: "Seabreeze and cool weather", // Kobe
-        }
-      ]
+      answers: {
+          answerFukuoka: "As hot as possible!",
+          answerTottori: "A nice breeze on a hot day",
+          answerAomori: "Nothing over 25 degrees please!",
+          answerHokkaido: "As chilly as can be",
+          answerHiroshima: "A mild, comfortable temperature",
+          answerOsaka: "Cool wind and varying weather",
+          answerKobe: "Seabreeze and cool weather",
+      }
     },
     {
       id: 2,
       question: "What is your favorite pastime?",
-      questions: [
-        {
-          answer1: "Skiing", // Hokkaido
-          answer2: "Going out for food with friends", // Osaka
-          answer3: "Hanging out at the beach", // Fukuoka
-          answer4: "Making trips to small neighboring destinations", // Tottori
-          answer5: "Going for a river boat ride or to museums", // Hiroshima
-          answer6: "Spending time at shopping malls", // Kobe
-          answer7: "Going on a hike", // Aomori
-        }
+      answers: [
+          "Skiing", // Hokkaido
+          "Going out for food with friends", // Osaka
+          "Hanging out at the beach", // Fukuoka
+          "Making trips to small neighboring destinations", // Tottori
+          "Going for a river boat ride or to museums", // Hiroshima
+          "Spending time at shopping malls", // Kobe
+          "Going on a hike", // Aomori
       ]
     },
     {
       id: 3,
       question: "What is your favorite food (out of the options)?",
       answers: [
-        {
-          answer1: "Noodles", // Hiroshima
-          answer2: "Fish dishes", // Aomori
-          answer3: "I cannot chose one, I have too many", // Osaka
-          answer4: "Ramen or chicken skewers", // Fukuoka
-          answer5: "Beef", // Kobe
-          answer6: "Seafood", // Tottori
-          answer7: "Sushi and Sashimi", // Hokkaido
-        }
+          "Noodles", // Hiroshima
+          "Fish dishes", // Aomori
+          "I cannot chose one, I have too many", // Osaka
+          "Ramen or chicken skewers", // Fukuoka
+          "Beef", // Kobe
+          "Seafood", // Tottori
+          "Sushi and Sashimi", // Hokkaido
       ]
     },
     {
       id: 4,
       question: "What type of scenery do you prefer?",
       answers: [
-        {
-          answer1: "Mountainous", // Aomori, Hokkaido
-          answer2: "Sea and Mountains", // Kobe, Fukuoka
-          answer3: "Seaside or Desert", // Tottori
-          answer4: "Flat with mountains seen in the distance", // Osaka and Hiroshima
-        }
+          "Mountainous", // Aomori, Hokkaido
+          "Sea and Mountains", // Kobe, Fukuoka
+          "Seaside and Desert", // Tottori
+          "Flat with mountains seen in the distance", // Osaka and Hiroshima
       ]
     },
     {
         id: 4,
         question: "Do you prefer a lively/vibrant place or a relaxing, calm atmosphere?",
-        answers: [{
-            answer1: "Super lively!",
-            answer2: "Quiet and calm",
-            answer3: "",
-            answer4: "",
-            answer5: "",
-            answer6: "",
-        }]
+        answers: [
+            // Osaka
+            "Super lively!",
+            // Tottori, Aomori, Hiroshima
+            "Quiet and calm",
+            // Fukuoka, Kobe, Hokkaido
+            "A mixture of both",
+        ]
     },
     {
         id: 5,
-        question: "",
-        answer1: "",
-        answer2: "",
-        answer3: "",
-        answer4: "",
-        answer5: "",
-        answer6: "",
-    },
-    {
-        id: 6,
-        question: "",
-        answer1: "",
-        answer2: "",
-        answer3: "",
-        answer4: "",
-        answer5: "",
-        answer6: "",
-    },
-    {
-        id: 7,
-        question: "",
-        answer1: "",
-        answer2: "",
-        answer3: "",
-        answer4: "",
-        answer5: "",
-        answer6: "",
+        question: "How far from Tokyo airport would you be willing to go?",
+        answers: [
+            // Osaka, Kobe, Hiroshima
+            "2-3 hours",
+            // Tottori, Aomori
+            "up to 5 hours",
+            // Fukuoka, Hokkaido
+            "Another flight, or long trainride would be fine!",
+        ]
     }
 ]
