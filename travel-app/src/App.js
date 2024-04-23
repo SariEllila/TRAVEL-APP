@@ -7,13 +7,19 @@ import DestinationsData from './DestinationsData';
 import Weather from './components/Weather';
 import NewsData from './NewsData';
 import NewsCards from './components/NewsCards';
+import Quiz from './components/Quiz';
+import QuizData from './QuizData';
 
 function App() {
-
   const [selectedDestinationId, setSelectedDestinationId] = useState(null);
+  const [showQuiz, setShowQuiz] = useState(false);
 
   function handleDestClick(id) {
     setSelectedDestinationId(id);
+  }
+
+  function handleQuizClick() {
+    setShowQuiz(true);
   }
 
   const destCards = DestinationsData.map(item => (
@@ -52,23 +58,41 @@ function App() {
     />
   ));
 
+  const quizPage = QuizData.map(item => (
+    <Quiz 
+      key={item.id}
+      question={item.question}
+      answers={item.answers}
+    />
+  ));
+
   return (
     <div>
       <Header />
       <div className="destinations-scroll">
         {destCards}
       </div>
-      <div className="quiz-link-text">
-        <h1>Do you want to know which destination is best for YOU?</h1>
-        <h1>Take the QUIZ <span>HERE</span></h1>
-      </div>
-      <div className="news-weather-container">
-        <div>
-          {selectedDestinationId ? destPages : newsCards}
-        </div>
-        <div>
-          <Weather />
-        </div>
+      <div className="quizlink-news-weather-container">
+        {showQuiz ? (
+          <div>
+            {quizPage}
+          </div>
+        ) : (
+          <div>
+            <div className="quiz-link-text">
+              <h1>Do you want to know which destination is best for YOU?</h1>
+              <h1 onClick={handleQuizClick}>Take the QUIZ <span>HERE</span></h1>
+            </div>
+            <div className="news-weather-container">
+              <div>
+                {selectedDestinationId ? destPages : newsCards}
+              </div>
+              <div>
+                <Weather />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
