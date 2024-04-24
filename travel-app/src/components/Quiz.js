@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Quiz(props) {
-    const { question, answers, saveAnswers, renderResult, key, QuizData } = props;
+    const { question, answers, saveAnswers, key, QuizData,  } = props;
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
     function handleAnswerSelection(event) {

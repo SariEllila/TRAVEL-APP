@@ -28,9 +28,6 @@ function App() {
     console.log(savedAnswers)
   }
 
-  // function renderResult() {
-  //   if (answers.id === )
-  // }
 
   const destCards = DestinationsData.map(item => (
     <DestCards 
@@ -78,11 +75,68 @@ function App() {
     />
   ));
 
-  function renderResult(){
-    return (
-      console.log("YOUR RESULT")
-    )
+
+  function findMostFrequentAnswer(savedAnswers) {
+
+    let counts = {};
+
+    savedAnswers.forEach(function(string) {
+        if (counts[string]) {
+            counts[string]++;
+        } else {
+            counts[string] = 1;
+        }
+    });
+
+    let mostFrequentAnswer;
+    let maxCount = 0;
+
+    for (let string in counts) {
+        if (counts[string] > maxCount) {
+            mostFrequentAnswer = string;
+            maxCount = counts[string];
+        }
+    }
+    return mostFrequentAnswer;
+}
+
+function renderQuizResult() {
+
+  const mostFrequent = findMostFrequentAnswer(savedAnswers);
+  
+  // Find the destination that matches the most frequent answer
+  const matchingDestination = DestinationsData.find(destination =>
+      destination.city.toLowerCase() === mostFrequent.toLowerCase().replace('answer ', '')
+  );
+
+  // If a matching destination is found, render its city and img
+  if (matchingDestination) {
+      return (
+          <div>
+              <Header />
+              <div className="destinations-scroll">
+                  <DestCards 
+                      img={matchingDestination.img}
+                      city={matchingDestination.city}
+                      handleDestClick={() => handleDestClick(matchingDestination.id)}
+                  />
+              </div>
+          </div>
+      );
+  } else {
+      // If no matching destination is found, render a message or fallback content
+      return (
+          <div>
+              <Header />
+              <div className="destinations-scroll">
+                  <h2>No matching destination found.</h2>
+              </div>
+          </div>
+      );
   }
+
+}
+
 
   return (
     <div>
@@ -94,6 +148,7 @@ function App() {
         {showQuiz ? (
           <div>
             {quizPage}
+            <button onClick={() => renderQuizResult}>CHECK RESULTS</button>
           </div>
         ) : (
           <div>
