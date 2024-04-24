@@ -13,6 +13,7 @@ import QuizData from './QuizData';
 function App() {
   const [selectedDestinationId, setSelectedDestinationId] = useState(null);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [savedAnswers, setSavedAnswers] = useState([]);
 
   function handleDestClick(id) {
     setSelectedDestinationId(id);
@@ -21,6 +22,15 @@ function App() {
   function handleQuizClick() {
     setShowQuiz(true);
   }
+
+  function saveAnswers(answer) {
+    setSavedAnswers(prevAnswers => [...prevAnswers, answer]);
+    console.log(savedAnswers)
+  }
+
+  // function renderResult() {
+  //   if (answers.id === )
+  // }
 
   const destCards = DestinationsData.map(item => (
     <DestCards 
@@ -60,11 +70,19 @@ function App() {
 
   const quizPage = QuizData.map(item => (
     <Quiz 
+      QuizData = {QuizData.length-1}
       key={item.id}
       question={item.question}
       answers={item.answers}
+      saveAnswers={saveAnswers}
     />
   ));
+
+  function renderResult(){
+    return (
+      console.log("YOUR RESULT")
+    )
+  }
 
   return (
     <div>
@@ -99,4 +117,3 @@ function App() {
 }
 
 export default App;
-

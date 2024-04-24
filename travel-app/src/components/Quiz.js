@@ -1,35 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Quiz(props) {
-    const { question, answers } = props;
-    const [quizAnswer, setQuizAnswer] = useState(""); 
+    const { question, answers, saveAnswers, renderResult, key, QuizData } = props;
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
 
-    function handleNextQuestion(event) {
-        event.preventDefault(); // Prevent form submission
-        // You need to find the selected answer from the event target
-        const selectedAnswer = event.target.elements.answer.value;
-        setQuizAnswer(selectedAnswer);
+    function handleAnswerSelection(event) {
+        setSelectedAnswer(event.target.getAttribute('data-key'));
     }
-  
+
+    const [isLastQuestion, setIsLastQuestion] = useState(false)
+
+    function handleNextButtonClick() {
+        if (selectedAnswer !== null) {
+            saveAnswers(selectedAnswer);
+        }
+    }
+
+    useEffect(() => {
+        function checkIfLastQuestion() {
+            if (key === QuizData.length-1)
+            setIsLastQuestion(true);
+        }
+    
+        checkIfLastQuestion();
+    
+    }, []);
+
+
     return (
         <div>
             <div>
-                <form onSubmit={handleNextQuestion}>
+                <form>
                     <h1>{question}</h1>
-                    {Object.values(answers).map((answer, index) => (
+                    {Object.entries(answers).map(([key, answer], index) => (
                         <div key={index}>
                             <input 
                                 type="radio" 
                                 id={`answer${index + 1}`} 
                                 name="answer" 
-                                value={answer} />
+                                data-key={key} 
+                                onChange={handleAnswerSelection}
+                            />
                             <label htmlFor={`answer${index + 1}`}>{answer}</label>
                         </div>
                     ))}
-                    <button type="submit">Next</button>
                 </form>
+                <button onClick={handleNextButtonClick}>{isLastQuestion ? "NEXT" : "SUBMIT"}</button>
             </div>
-            <p>Selected Answer: {quizAnswer}</p> {/* Display selected answer */}
         </div>
     );
 }
