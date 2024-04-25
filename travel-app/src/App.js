@@ -35,7 +35,6 @@ function App() {
   }
 
 
-
   const selectedDest = DestinationsData.find(item => item.id === selectedDestinationId);
 
   const destCards = DestinationsData.map(item => (
@@ -163,39 +162,49 @@ function renderQuizResult() {
 return (
   <div>
     <Header />
+    
     <div className="destinations-scroll">
-    <h1 className="browse-dest-text">Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span></h1>
+      <h1 className="browse-dest-text">
+        Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span>
+      </h1>
       {destCards}
       <h2>→</h2>
     </div>
-    <div className="quizlink-news-weather-container">
-      {showQuiz ? (
-            <div>
-              {quizPage}
-              <button onClick={() => renderQuizResult}>CHECK RESULTS</button>
-            </div>
-          ) : (
-            <div>
-          <div className="quiz-link-text">
-            <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
-            <h1 onClick={handleQuizClick}>Take the <span style={{fontSize: "1.5em", fontWeight:"bolder"}}>QUIZ</span></h1>
-          </div>
 
-          <div className="news-weather-container">
-            <div>
-              {selectedDestinationId && destPages}
-              {selectedNewsId && newsPages}
-              {!selectedDestinationId && !selectedNewsId && newsCards}
-            </div>
-            <div>
-              <Weather />
-            </div>
-          </div>
+    <div className="quiz-container">
+      <div className="quiz-link-text">
+        <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
+        <h1 onClick={handleQuizClick}>
+          Take the <span style={{fontSize: "1.5em", fontWeight:"bolder"}}>QUIZ</span>
+        </h1>
+      </div>
+      {showQuiz && (
+        <div>
+          {quizPage}
+          <button onClick={() => renderQuizResult()}>CHECK RESULTS</button>
         </div>
       )}
     </div>
+
+    <div className="news-weather-container">
+      <div className="news-quiz-container">
+        {showQuiz ? null : (
+          <div>
+            {selectedDestinationId && destPages}
+            {selectedNewsId && newsPages}
+            {!selectedDestinationId && !selectedNewsId && newsCards}
+          </div>
+        )}
+      </div>
+
+      <div>
+        <Weather />
+      </div>
+
+    </div>
   </div>
 );
+
 }
 
 export default App;

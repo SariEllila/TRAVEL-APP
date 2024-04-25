@@ -9,11 +9,16 @@ const NewsCard = (props) => {
     
     return (
         <div className="news-card">
-            <img src={props.img} alt="Image" className="news-card-img"/>
+            <div className="news-card-text">
             <h2>{props.title}</h2>
             <p>{props.date}</p>
             <p>{truncatedText}...</p>
             <p className={"light-coral"} onClick={props.handleNewsClick}>Read more...</p>
+            </div>
+
+            <div>
+            <img src={props.img} alt="Image" className="news-card-img"/>
+            </div>
         </div>
     );
 };

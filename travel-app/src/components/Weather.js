@@ -44,44 +44,66 @@ export default function Weather() {
 
     const handleSearch = () => {
         search(inputValue);
+        setInputValue('');
     };
 
     return (
-        <div className="weatherContainer">
+        <div className="weather-container">
+        <div className="weather-item">
             <div className="weather-top-bar">
                 <h2>How's the weather?</h2>
-                <input 
-                    className="city-input" 
-                    type="text" 
-                    placeholder="Insert city..."
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                />
-                <div>
-                    <img src={searchIcon} alt="Search" onClick={handleSearch} />
-                </div>
+                <div className="weather-search-bar">
+  <input 
+    className="city-input" 
+    type="text" 
+    placeholder="Search City..."
+    value={inputValue}
+    onChange={(e) => setInputValue(e.target.value)}
+  />
+  <div>
+    <img src={searchIcon} alt="Search" onClick={handleSearch} className="weather-search-icon"/>
+  </div>
+</div>
+
+                    <div className="weather-location">
+                        <h1>{location}</h1>
+                    </div>
+                    <div className="weather-temp">
+                        <h2>{temperature}</h2>
+                    </div>
+
             </div>
-            <div className="weather-img">
-                <img src={wicon} alt="Weather" />
+
+            <div>
+                <img src={wicon} alt="Weather icon" className="weather-img" />
             </div>
-            <div className="weather-temp">{temperature}</div>
-            <div className="weather-location">{location}</div>
+
             <div className="data-container">
-                <div className="element">
+                <div className="weather-element">
                     <img src="" className="icon" alt="" />
                     <div className="weather-data">
-                        <div className="humidity-percentage">{humidity}</div>
-                        <div className="weather-text">Humidity</div>
+                    <div className="weather-text">
+                            <h3>Humidity</h3>
+                        </div>
+                        <div className="humidity-percentage">
+                            <h4>{humidity}</h4>
+                        </div>
                     </div>
                 </div>
-                <div className="element">
+                <div className="weather-element">
                     <img src="" className="icon" alt="" />
                     <div className="weather-data">
-                        <div className="wind-speed">{windSpeed}</div>
-                        <div className="weather-text">Wind Speed</div>
+                    <div className="weather-text">
+                            <h3>Wind Speed</h3>
+                        </div>
+                        <div className="wind-speed">
+                            <h4>{windSpeed}</h4>
+                        </div>
+
                     </div>
                 </div>
             </div>
+        </div>    
         </div>
     );
 }
