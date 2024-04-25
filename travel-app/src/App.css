@@ -1,15 +1,19 @@
 * {
   margin: 0 auto;
-  text-align: center;
 }
 
-.App {
-  text-align: center;
+.light-coral {
+  color: lightcoral;
 }
 
 .banner-img {
-  width: 600px;
-  height: 200px;
+    max-width: 50%;
+    height: auto;
+    display: block;
+}
+
+.dest-cards-item {
+  position: relative;
 }
 
 .dest-cards-img {
@@ -19,18 +23,20 @@
 }
 
 .dest-cards-city {
-  color: grey;
-  text-align: left;
-  margin-left: 5%;
+  color: white;
+  position: absolute;
+  bottom: 0.5rem;;
+  padding-left: 1rem;
+  font-size: 1.5rem;
 }
 
 .destinations-scroll {
   display: flex;
-  border-bottom: solid rgb(16, 15, 15) 0.3px;
-  border-top: solid rgb(16, 15, 15) 0.3px;
-  padding: 1%;
-  margin-top: 1%;
-  width: 95%;
+  border-bottom: solid rgb(144, 143, 143) 1px;
+  border-top: solid rgb(144, 143, 143) 1px;
+  padding: 0.8%;
+  margin-top: 2%;
+  width: 90%;
 }
 
 
@@ -50,3 +56,4 @@
   grid-template-columns: 2;
   grid-template-rows: 1;
 }
+

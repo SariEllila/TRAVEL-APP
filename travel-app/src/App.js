@@ -137,38 +137,39 @@ function renderQuizResult() {
 
 }
 
-
-  return (
-    <div>
-      <Header />
-      <div className="destinations-scroll">
-        {destCards}
-      </div>
-      <div className="quizlink-news-weather-container">
-        {showQuiz ? (
-          <div>
-            {quizPage}
-            <button onClick={() => renderQuizResult}>CHECK RESULTS</button>
-          </div>
-        ) : (
-          <div>
-            <div className="quiz-link-text">
-              <h1>Do you want to know which destination is best for YOU?</h1>
-              <h1 onClick={handleQuizClick}>Take the QUIZ <span>HERE</span></h1>
-            </div>
-            <div className="news-weather-container">
-              <div>
-                {selectedDestinationId ? destPages : newsCards}
-              </div>
-              <div>
-                <Weather />
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
+return (
+  <div>
+    <Header />
+    <div className="destinations-scroll">
+    <h1 className="browse-dest-text">Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span></h1>
+      {destCards}
+      <h2>→</h2>
     </div>
-  );
+    <div className="quizlink-news-weather-container">
+      {showQuiz ? (
+        <div>
+          {quizPage}
+          <button onClick={() => renderQuizResult}>CHECK RESULTS</button>
+        </div>
+      ) : (
+        <div>
+          <div className="quiz-link-text">
+            <h1>Do you want to know which destination is best for YOU?</h1>
+            <h1 onClick={handleQuizClick}>Take the QUIZ <span>HERE</span></h1>
+          </div>
+          <div className="news-weather-container">
+            <div>
+              {selectedDestinationId ? destPages : newsCards}
+            </div>
+            <div>
+              <Weather />
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+);
 }
 
 export default App;

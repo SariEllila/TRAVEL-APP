@@ -33,7 +33,7 @@ export default [
     },
     {
         id: 4,
-        img: "https://i0.wp.com/www.fukuoka-now.com/wp-content/uploads/2022/09/fn_ohori-park-showcase-adjusted_cl.jpg?w=1400&ssl=1",
+        img: "https://images.pexels.com/photos/11947131/pexels-photo-11947131.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         city: 'Fukuoka',
         location: 'South Japan (Island of Kyushu)',
         distanceFromTokyo: '7 hours(train), 1,5 hours(flight)',
@@ -53,7 +53,7 @@ export default [
     },
     {
         id: 6,
-        img: "https://offbeatjapan.org/wp-content/uploads/2013/12/tottori-sand-wonders.jpg",
+        img: "https://images.pexels.com/photos/2147272/pexels-photo-2147272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         city: 'Tottori',
         location: 'Central Japan',
         distanceFromTokyo: '4 hours',
@@ -63,7 +63,7 @@ export default [
     },
     {
         id: 7,
-        img: "https://a.cdn-hotels.com/gdcs/production181/d1787/0e95a0a1-52a2-4ec4-9c8d-2e7146b5124c.jpg?impolicy=fcrop&w=800&h=533&q=medium",
+        img: "https://images.pexels.com/photos/16122915/pexels-photo-16122915/free-photo-of-mount-yotei-in-the-shikotsu-toya-national-park-japan.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
         city: 'Hokkaido',
         location: 'North Japan',
         distanceFromTokyo: '8 hours(by train), 1,5 hours(by plane)',
