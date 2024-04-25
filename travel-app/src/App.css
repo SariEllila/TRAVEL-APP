@@ -1,9 +1,11 @@
 * {
   margin: 0 auto;
+  color: rgb(77, 76, 76);
 }
 
 .light-coral {
-  color: lightcoral;
+  color: rgb(255, 119, 119);
+  font-weight:bolder;
 }
 
 .banner-img {
@@ -41,13 +43,18 @@
 
 
 .quiz-link-text {
-  padding: 5%;
-  border-bottom: grey solid 0.4px;
+  margin: 2% 4%;
+  padding: 2%;
+  border: rgb(229, 230, 231) solid 0.1px;
+  background-color: #FFFFFF;
+  text-align: center;
+  line-height: 8vh;
+  box-shadow: 0 0 13px 0 rgb(217, 217, 217)
 }
 
 .quiz-link-text span {
-  color: pink;
-  text-decoration: underline;
+  color: rgb(255, 119, 119);
+  text-decoration: none;
 }
 
 
@@ -55,5 +62,10 @@
   display: grid;
   grid-template-columns: 2;
   grid-template-rows: 1;
+}
+
+.news-card-img {
+  width: 33vw;
+  height: auto;
 }
 

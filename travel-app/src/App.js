@@ -9,14 +9,20 @@ import NewsData from './NewsData';
 import NewsCards from './components/NewsCards';
 import Quiz from './components/Quiz';
 import QuizData from './QuizData';
+import NewsPages from './components/NewsPages'
 
 function App() {
   const [selectedDestinationId, setSelectedDestinationId] = useState(null);
+  const [selectedNewsId, setSelectedNewsId] = useState(null);
   const [showQuiz, setShowQuiz] = useState(false);
   const [savedAnswers, setSavedAnswers] = useState([]);
 
   function handleDestClick(id) {
     setSelectedDestinationId(id);
+  }
+
+  function handleNewsClick(id) {
+    setSelectedNewsId(id);
   }
 
   function handleQuizClick() {
@@ -29,6 +35,9 @@ function App() {
   }
 
 
+
+  const selectedDest = DestinationsData.find(item => item.id === selectedDestinationId);
+
   const destCards = DestinationsData.map(item => (
     <DestCards 
       key={item.id}
@@ -38,8 +47,6 @@ function App() {
       handleDestClick={() => handleDestClick(item.id)}
     />
   ));
-
-  const selectedDest = DestinationsData.find(item => item.id === selectedDestinationId);
 
   const destPages = selectedDest ? (
     <DestPages 
@@ -55,6 +62,8 @@ function App() {
     />
   ) : null;
 
+  const selectedNews = NewsData.find(item => item.id === selectedNewsId);
+
   const newsCards = NewsData.map(item => (
     <NewsCards 
       key={item.id}
@@ -62,8 +71,21 @@ function App() {
       title={item.title}
       text={item.text}
       date={item.date}
+      handleNewsClick={() => handleNewsClick(item.id)}
     />
   ));
+
+  const newsPages = selectedNews ? (
+    <NewsPages 
+      key={selectedNews.id}
+      img={selectedNews.img}
+      title={selectedNews.title}
+      date={selectedNews.date}
+      text={selectedNews.text}
+    />
+  ) : null;
+
+
 
   const quizPage = QuizData.map(item => (
     <Quiz 
@@ -74,6 +96,7 @@ function App() {
       saveAnswers={saveAnswers}
     />
   ));
+
 
 
   function findMostFrequentAnswer(savedAnswers) {
@@ -147,19 +170,22 @@ return (
     </div>
     <div className="quizlink-news-weather-container">
       {showQuiz ? (
-        <div>
-          {quizPage}
-          <button onClick={() => renderQuizResult}>CHECK RESULTS</button>
-        </div>
-      ) : (
-        <div>
+            <div>
+              {quizPage}
+              <button onClick={() => renderQuizResult}>CHECK RESULTS</button>
+            </div>
+          ) : (
+            <div>
           <div className="quiz-link-text">
-            <h1>Do you want to know which destination is best for YOU?</h1>
-            <h1 onClick={handleQuizClick}>Take the QUIZ <span>HERE</span></h1>
+            <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
+            <h1 onClick={handleQuizClick}>Take the <span style={{fontSize: "1.5em", fontWeight:"bolder"}}>QUIZ</span></h1>
           </div>
+
           <div className="news-weather-container">
             <div>
-              {selectedDestinationId ? destPages : newsCards}
+              {selectedDestinationId && destPages}
+              {selectedNewsId && newsPages}
+              {!selectedDestinationId && !selectedNewsId && newsCards}
             </div>
             <div>
               <Weather />

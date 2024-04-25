@@ -1,20 +1,21 @@
-import React from 'react'
+import React from 'react';
 
-function NewsCards (props) {
+const NewsCard = (props) => {
 
+    let truncatedText = '';
+    if (props.text) {
+        truncatedText = props.text.substring(0, 500);
+    }
+    
     return (
-        <div className="news-container">
-        <div className="news-cards-item">
-        <img src={`${props.img}`} class="news-cards-img"/>
-        <h1 className="news-cards-title">{props.title}</h1>
-        <h3>{props.date}</h3>
+        <div className="news-card">
+            <img src={props.img} alt="Image" className="news-card-img"/>
+            <h2>{props.title}</h2>
+            <p>{props.date}</p>
+            <p>{truncatedText}...</p>
+            <p className={"light-coral"} onClick={props.handleNewsClick}>Read more...</p>
         </div>
-        <div>
-            {props.text}
-        </div>
-        </div>
-    )
+    );
+};
 
-}
-
-export default NewsCards
+export default NewsCard;
