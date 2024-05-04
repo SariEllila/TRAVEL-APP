@@ -4,13 +4,13 @@ export default function DestPages(props) {
 
 return (
     <div>
-        <img src={`${props.img}`}/>
-        <h1>{props.city}</h1>
-        <h4>{props.location}</h4>
-        <h4>{props.distanceFromTokyo}</h4>
-        <h4>{props.population}</h4>
-        <p>{props.description}</p>
-        <h4>{props.popularSights}</h4>
+        <h1 className="dest-page-title">{props.city}</h1>
+        <img src={`${props.img}`} className="dest-page-img"/>
+        <p><span className="dest-page-data">Location:</span> {props.location}</p>
+        <p><span className="dest-page-data">Distance from Tokyo:</span> {props.distanceFromTokyo}</p>
+        <p><span className="dest-page-data">Population:</span> {props.population}</p>
+        <h4 className="dest-page-text"><span className="light-coral">About:<br /></span> {props.description}</h4>
+        <h4 className="dest-page-text"><span className="light-coral">Sights:<br /></span>{props.popularSights}</h4>
     </div>
 )
 

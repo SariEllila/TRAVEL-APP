@@ -59,7 +59,7 @@
 
 .news-quiz-container {
   border-right: 1px solid grey;
-  padding: 0 10%;
+  padding: 0 4% 0 0;
 }
 
 .news-card {
@@ -69,7 +69,7 @@
 }
 
 .news-card-img {
-  width: 30vw;
+  width: 35vw;
   height: auto;
 }
 
@@ -80,12 +80,17 @@
 .news-page-img {
   width: 70%;
   height: auto;
+  margin-top: 2%;
+}
+
+.news-page-text {
+  margin-top: 2%;
 }
 
 .news-weather-container {
   display: grid;
   grid-template-columns: 80% 20%; /* Two equal-width columns */
-  margin: 0 10%;
+  margin: 0 5%;
 }
 
 .news-quiz-container {
@@ -97,27 +102,24 @@
 
 .weather-container {
   width: 100%;
-  margin-left: 10%;
 }
 
 .weather-item {
-  width: 50%;
   background: rgb(255, 234, 234);
   border-radius: 10%;
-  padding: 10%;
-  box-shadow: 0 0 1vw 0 rgb(217, 217, 217)
+  box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+  text-align: center;
 }
 
 .weather-search-icon {
-  width: 2.5rem;
+  width: 2.5vw;
 }
 
 .city-input {
+  font-size: 100%;
   margin: 2% 0;
-  font-size: 1.5rem;
-  border-radius: 1%;
+  border-radius: 2%;
   border: grey solid 0.5px;
-  padding: 2%;
 }
 
 .weather-search-bar {
@@ -130,15 +132,23 @@
   display: block;
 }
 
-.weather-element {
-  text-align: center;;
+
+.dest-page-img {
+  width: 80%;
+  margin-bottom: 1%;
 }
 
-.weather-location {
-  text-align: center;
+.dest-page-title {
+  font-size: 4vw;
 }
 
-.weather-temp {
-  text-align: center;
+.dest-page-data {
+  font-weight: bold;
+  line-height: 2cap;
 }
 
+.dest-page-text {
+  width: 100%;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}

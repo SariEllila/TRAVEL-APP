@@ -187,20 +187,19 @@ return (
     </div>
 
     <div className="news-weather-container">
-      <div className="news-quiz-container">
-        {showQuiz ? null : (
-          <div>
-            {selectedDestinationId && destPages}
-            {selectedNewsId && newsPages}
-            {!selectedDestinationId && !selectedNewsId && newsCards}
+          <div className="news-quiz-container">
+            {showQuiz ? null : (
+              <div>
+                {selectedDestinationId && destPages}
+                {selectedNewsId && newsPages}
+                {!selectedDestinationId && !selectedNewsId && newsCards}
+              </div>
+            )}
           </div>
-        )}
-      </div>
 
-      <div>
-        <Weather />
-      </div>
-
+          <div>
+            <Weather />
+          </div>
     </div>
   </div>
 );
