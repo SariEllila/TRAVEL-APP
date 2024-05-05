@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import Header from './components/Header';
 import DestCards from './components/DestCards';
@@ -159,47 +159,74 @@ function renderQuizResult() {
 
 }
 
+const [scrollPosition, setScrollPosition] = useState(0);
+const containerRef = useRef();
+const item_width = 400;
+
+const handleScroll = (scrollAmount) => {
+
+  const newScrollPosition = scrollPosition + scrollAmount
+
+  setScrollPosition(newScrollPosition);
+
+  containerRef.current.scrollLeft = newScrollPosition;
+}
+
+
 return (
   <div>
     <Header />
     
-    <div className="destinations-scroll">
+    <div className="browse-dest">
       <h1 className="browse-dest-text">
         Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span>
       </h1>
-      {destCards}
-      <h2>→</h2>
+
+      <div className="destinations-scroll">
+        <div ref={containerRef} style={{
+          width:"90vw",
+          overflowX:"scroll",
+          scrollBehavior:"smooth"
+        }}>
+          <div className="destcards-box">
+            {destCards}
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div className="quiz-container">
-      <div className="quiz-link-text">
-        <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
-        <h1 onClick={handleQuizClick}>
-          Take the <span style={{fontSize: "1.5em", fontWeight:"bolder"}}>QUIZ</span>
-        </h1>
-      </div>
-      {showQuiz && (
-        <div>
-          {quizPage}
-          <button onClick={() => renderQuizResult()}>CHECK RESULTS</button>
-        </div>
-      )}
+    <div className="dest-scroll-buttons">
+      <button onClick={() => {handleScroll(-item_width)}}>←</button>
+      <button onClick={() => {handleScroll(item_width)}}>→</button>
     </div>
+
+    {showQuiz && (
+      <div>
+        {quizPage}
+        <button onClick={() => renderQuizResult()}>CHECK RESULTS</button>
+      </div>
+    )}
 
     <div className="news-weather-container">
-          <div className="news-quiz-container">
-            {showQuiz ? null : (
-              <div>
-                {selectedDestinationId && destPages}
-                {selectedNewsId && newsPages}
-                {!selectedDestinationId && !selectedNewsId && newsCards}
-              </div>
-            )}
-          </div>
-
+      <div className="news-quiz-container">
+        {!showQuiz && (
           <div>
-            <Weather />
+            {selectedDestinationId && destPages}
+            {selectedNewsId && newsPages}
+            {!selectedDestinationId && !selectedNewsId && newsCards}
           </div>
+        )}
+      </div>
+
+      <div className="quiz-container">
+      <Weather className="weather-container"/>
+        <div className="quiz-link-text">
+          <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
+          <h1 onClick={handleQuizClick}>
+            Take the <span style={{fontSize: "1.5em", fontWeight:"bolder"}}>QUIZ</span>
+          </h1>
+        </div>
+      </div>
     </div>
   </div>
 );

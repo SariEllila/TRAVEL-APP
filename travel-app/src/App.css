@@ -12,6 +12,19 @@
     max-width: 50%;
     height: auto;
     display: block;
+    padding-bottom: 1%;
+}
+
+.browse-dest {
+  border-top: solid rgb(156, 156, 156) 0.5px;
+  padding-top: 1.5%;
+  width: 90%;
+  display: grid;
+  justify-content: start;
+}
+
+.browse-dest-text {
+  text-align: left;
 }
 
 .dest-cards-item {
@@ -19,7 +32,7 @@
 }
 
 .dest-cards-img {
-  width: 90%;
+  width: 18vw;
   height: auto;
   display: block;
 }
@@ -27,18 +40,56 @@
 .dest-cards-city {
   color: white;
   position: absolute;
-  bottom: 0.5rem;;
+  bottom: 0.5rem;
   padding-left: 1rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 
 .destinations-scroll {
+  width: 100%;
+  height: auto;
   display: flex;
-  border-bottom: solid rgb(144, 143, 143) 1px;
-  border-top: solid rgb(144, 143, 143) 1px;
-  padding: 0.8%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 2%;
+}
+
+.destcards-box {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1.2%;
+}
+
+.dest-scroll-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1% 0;
+  margin: 0 45%;
+}
+
+.dest-scroll-buttons button {
+  font-size: 15px;
+  color: grey;
+  border-radius: 6px;
+  cursor: pointer;
+  border:none;
+  transition: all 0.5s ease;
+  background-color: rgb(255, 248, 248);
+  border-radius: 50px;
+  font-size: 1.5vw;
+  font-family: 'arial';
+}
+
+
+.quiz-container {
   width: 90%;
+}
+
+.weather-container {
+  margin-bottom: 5%;
 }
 
 .quiz-link-text {
@@ -48,7 +99,7 @@
   background-color: #FFFFFF;
   text-align: center;
   line-height: 8vh;
-  box-shadow: 0 0 1vw 0 rgb(217, 217, 217)
+  box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
 }
 
 .quiz-link-text span {
