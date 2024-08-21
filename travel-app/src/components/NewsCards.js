@@ -11,9 +11,9 @@ const NewsCard = (props) => {
         <div className="news-card">
             <div className="news-card-text">
             <h2>{props.title}</h2>
-            <p>{props.date}</p>
+            <h4>{props.date}</h4>
             <p>{truncatedText}...</p>
-            <p className={"light-coral"} onClick={props.handleNewsClick}>Read more...</p>
+            <p className="newscard-read-more" onClick={props.handleNewsClick}>Read more...</p>
             </div>
 
             <div>

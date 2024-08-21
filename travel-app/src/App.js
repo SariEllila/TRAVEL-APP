@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import DestCards from './components/DestCards';
@@ -9,36 +9,56 @@ import NewsData from './NewsData';
 import NewsCards from './components/NewsCards';
 import Quiz from './components/Quiz';
 import QuizData from './QuizData';
-import NewsPages from './components/NewsPages'
+import NewsPages from './components/NewsPages';
+import Footer from './components/Footer'
 
 function App() {
   const [selectedDestinationId, setSelectedDestinationId] = useState(null);
   const [selectedNewsId, setSelectedNewsId] = useState(null);
   const [showQuiz, setShowQuiz] = useState(false);
+  const [viewType, setViewType] = useState(''); // New state to manage the view type (destinations, news, quiz)
+  const [showQuizContainer, setShowQuizContainer] = useState(true);
   const [savedAnswers, setSavedAnswers] = useState([]);
 
   function handleDestClick(id) {
     setSelectedDestinationId(id);
+    setSelectedNewsId(null); // Reset selected news
+    setShowQuiz(false); // Hide quiz
+    setViewType('destinations'); // Set view to destinations
   }
 
   function handleNewsClick(id) {
     setSelectedNewsId(id);
+    setSelectedDestinationId(null); // Reset selected destination
+    setShowQuiz(false); // Hide quiz
+    setViewType('news'); // Set view to news
   }
 
   function handleQuizClick() {
     setShowQuiz(true);
+    setSelectedDestinationId(null); // Reset selected destination
+    setSelectedNewsId(null); // Reset selected news
+    setViewType('quiz'); // Set view to quiz
+  }
+
+  function handleBackToNews() {
+    setSelectedNewsId(null); // Reset selected news
+    setSelectedDestinationId(null); // Reset selected destination
+    setShowQuiz(false); // Hide quiz
+    setViewType(''); // Set view back to default
   }
 
   function saveAnswers(answer) {
     setSavedAnswers(prevAnswers => [...prevAnswers, answer]);
-    console.log(savedAnswers)
+    console.log(savedAnswers);
   }
 
-
+  // Data and component setup
   const selectedDest = DestinationsData.find(item => item.id === selectedDestinationId);
+  const selectedNews = NewsData.find(item => item.id === selectedNewsId);
 
   const destCards = DestinationsData.map(item => (
-    <DestCards 
+    <DestCards
       key={item.id}
       id={item.id}
       img={item.img}
@@ -48,10 +68,10 @@ function App() {
   ));
 
   const destPages = selectedDest ? (
-    <DestPages 
+    <DestPages
       key={selectedDest.id}
       id={selectedDest.id}
-      img={selectedDest.img} 
+      img={selectedDest.img}
       city={selectedDest.city}
       location={selectedDest.location}
       distanceFromTokyo={selectedDest.distanceFromTokyo}
@@ -61,10 +81,8 @@ function App() {
     />
   ) : null;
 
-  const selectedNews = NewsData.find(item => item.id === selectedNewsId);
-
   const newsCards = NewsData.map(item => (
-    <NewsCards 
+    <NewsCards
       key={item.id}
       img={item.img}
       title={item.title}
@@ -75,20 +93,19 @@ function App() {
   ));
 
   const newsPages = selectedNews ? (
-    <NewsPages 
+    <NewsPages
       key={selectedNews.id}
       img={selectedNews.img}
       title={selectedNews.title}
       date={selectedNews.date}
       text={selectedNews.text}
+      onBackToNews={handleBackToNews} // Pass the function as a prop
     />
   ) : null;
 
-
-
   const quizPage = QuizData.map(item => (
-    <Quiz 
-      QuizData = {QuizData.length-1}
+    <Quiz
+      QuizData={QuizData.length - 1}
       key={item.id}
       question={item.question}
       answers={item.answers}
@@ -96,141 +113,98 @@ function App() {
     />
   ));
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const containerRef = useRef();
+  const item_width = 400;
 
-
-  function findMostFrequentAnswer(savedAnswers) {
-
-    let counts = {};
-
-    savedAnswers.forEach(function(string) {
-        if (counts[string]) {
-            counts[string]++;
-        } else {
-            counts[string] = 1;
-        }
-    });
-
-    let mostFrequentAnswer;
-    let maxCount = 0;
-
-    for (let string in counts) {
-        if (counts[string] > maxCount) {
-            mostFrequentAnswer = string;
-            maxCount = counts[string];
-        }
-    }
-    return mostFrequentAnswer;
-}
-
-function renderQuizResult() {
-
-  const mostFrequent = findMostFrequentAnswer(savedAnswers);
-  
-  // Find the destination that matches the most frequent answer
-  const matchingDestination = DestinationsData.find(destination =>
-      destination.city.toLowerCase() === mostFrequent.toLowerCase().replace('answer ', '')
-  );
-
-  // If a matching destination is found, render its city and img
-  if (matchingDestination) {
-      return (
-          <div>
-              <Header />
-              <div className="destinations-scroll">
-                  <DestCards 
-                      img={matchingDestination.img}
-                      city={matchingDestination.city}
-                      handleDestClick={() => handleDestClick(matchingDestination.id)}
-                  />
-              </div>
-          </div>
-      );
-  } else {
-      // If no matching destination is found, render a message or fallback content
-      return (
-          <div>
-              <Header />
-              <div className="destinations-scroll">
-                  <h2>No matching destination found.</h2>
-              </div>
-          </div>
-      );
+  function debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      if (timeoutId) clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
   }
 
-}
+  const handleScroll = debounce((scrollAmount) => {
+    if (containerRef.current) {
+      const maxScrollLeft = containerRef.current.scrollWidth - containerRef.current.clientWidth;
+      const newScrollPosition = Math.min(Math.max(scrollPosition + scrollAmount, 0), maxScrollLeft);
+      setScrollPosition(newScrollPosition);
+      containerRef.current.scrollLeft = newScrollPosition;
+    }
+  }, 100);
 
-const [scrollPosition, setScrollPosition] = useState(0);
-const containerRef = useRef();
-const item_width = 400;
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollLeft = scrollPosition;
+    }
+  }, [scrollPosition]);
 
-const handleScroll = (scrollAmount) => {
+  return (
+    <div>
+      <Header />
 
-  const newScrollPosition = scrollPosition + scrollAmount
+      <div className="browse-dest">
+        <h1 className="browse-dest-text">
+          Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span>
+        </h1>
 
-  setScrollPosition(newScrollPosition);
-
-  containerRef.current.scrollLeft = newScrollPosition;
-}
-
-
-return (
-  <div>
-    <Header />
-    
-    <div className="browse-dest">
-
-      <h1 className="browse-dest-text">
-        Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span>
-      </h1>
-
-      <div className="destinations-scroll">
-        <div ref={containerRef} style={{
-          width:"90vw",
-          overflowX:"scroll",
-          scrollBehavior:"smooth"
-        }}>
-          <div className="destcards-box">
-            {destCards}
+        <div className="destinations-scroll">
+          <div ref={containerRef} style={{
+            width: "90vw",
+            overflowX: "scroll",
+            scrollBehavior: "smooth"
+          }}>
+            <div className="destcards-box">
+              {destCards}
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div className="dest-scroll-buttons">
-      <button onClick={() => {handleScroll(-item_width)}}>←</button>
-      <button onClick={() => {handleScroll(item_width)}}>→</button>
-    </div>
+      <div className="dest-scroll-buttons">
+        <button onClick={() => handleScroll(-item_width)}>←</button>
+        <button onClick={() => handleScroll(item_width)}>→</button>
+      </div>
 
-    <div className="quiz-container">
-        <div className="quiz-link-text">
-          <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
-          <h1 onClick={handleQuizClick}>
-            <span class="take-quiz-span"> Take the QUIZ</span>
-          </h1>
+      {showQuizContainer && !showQuiz && (
+        <div className="quiz-container">
+          <div className="quiz-link-text">
+            <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
+            <h1 onClick={handleQuizClick}>
+              <span className="take-quiz-span"> Take the QUIZ</span>
+            </h1>
+          </div>
+        </div>
+      )}
+
+      <div className="news-weather-container">
+        <div className="news-quiz-container">
+          {viewType === '' && (
+            <h1>Japan <span className="news-title-span">News</span></h1>
+          )}
+          {viewType === 'destinations' && destPages}
+          {viewType === 'news' && newsPages}
+          {viewType === 'quiz' && quizPage}
+          {!viewType && (
+            <div>
+              {newsCards}
+            </div>
+          )}
+        </div>
+
+        <div className="weather-container">
+          <div className="weather-subcontainer">
+            <h1>How's the <span className="light-coral">Weather?</span></h1>
+            <Weather />
+          </div>
         </div>
       </div>
-
-    <div className="news-weather-container">
-      <div className="news-quiz-container">
-        <h1>NEWS <span class="news-title-span">Japan</span></h1>
-        {!showQuiz && (
-          <div>
-            {selectedDestinationId && destPages}
-            {selectedNewsId && newsPages}
-            {!selectedDestinationId && !selectedNewsId && newsCards}
-          </div>
-        )}
-      </div>
-
-      <div className="weather-container">
-        <h1>How's the <span class="light-coral">Weather?</span></h1>
-        <Weather class="weather-subcontainer"/>
-      </div>
-
+      <Footer />
     </div>
-  </div>
-);
-
+  );
 }
 
 export default App;

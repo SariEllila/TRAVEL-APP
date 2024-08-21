@@ -9,32 +9,54 @@
 }
 
 .banner-img {
-    max-width: 30%;
+    max-width: 45%;
     height: auto;
     display: block;
-    padding-bottom: 1%;
+    margin-bottom: -0.5%;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end; /* Aligns child elements to the right */
+  align-items: center; /* Center items vertically (optional, if needed) */
+  width: 100%; /* Ensure the footer takes up full width */
+}
+
+.footer h4 {
+  font-size: 1rem; /* Font size as needed */
+  margin: 5% 7% 2% 0;
 }
 
 .browse-dest {
   border-top: solid rgb(156, 156, 156) 0.5px;
-  padding-top: 2.5%;
+  padding-top: 4%;
+  padding-bottom: 1%;
   width: 90%;
   display: grid;
   justify-content: start;
 }
 
-.browse-dest-text {
+.browse-dest h1 {
   text-align: left;
+  font-size: 2.3rem;
 }
 
 .dest-cards-item {
   position: relative;
+  padding-top: 3%;
 }
 
 .dest-cards-img {
-  width: 18vw;
-  height: auto;
+  width: 18vw; /* Keep the width consistent */
+  height: 12vw; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensure the image covers the area while preserving aspect ratio */
   display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for zoom and shadow effects */
+}
+
+.dest-cards-item:hover .dest-cards-img {
+  transform: scale(1.05); /* Slightly zooms out the image on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow */
 }
 
 .dest-cards-city {
@@ -43,6 +65,7 @@
   bottom: 0.5rem;
   padding-left: 1rem;
   font-size: 2rem;
+  text-shadow: 0 0 8vw 0 rgb(217, 217, 217);
 }
 
 .destinations-scroll {
@@ -71,17 +94,21 @@
 }
 
 .dest-scroll-buttons button {
-  font-size: 15px;
   color: white;
-  font-weight: bold;
-  border-radius: 6px;
   cursor: pointer;
-  border:none;
-  transition: all 0.5s ease;
-  background-color: rgb(255, 119, 119);
-  border-radius: 50px;
-  font-size: 1.5vw;
+  border: none;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  background-color:rgb(255, 119, 119);
+  border-radius: 50%;
+  font-size: 1.2vw;
   font-family: 'arial';
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.dest-scroll-buttons button:hover {
+  transform: scale(1.05);
+  background-color: rgb(255, 59, 59);
 }
 
 .take-quiz-span {
@@ -109,12 +136,14 @@
   border: rgb(229, 230, 231) solid 0.1px;
   background-color: #FFFFFF;
   text-align: center;
-  line-height: 4vh;
+  line-height: 9vh;
   box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
 }
 
-.quiz-link-text h1{
-font-size: 1.2rem;
+.quiz-link-text h1 {
+  font-size: 1.4rem;
+  display: inline-block; 
+  margin: 0 0.5rem;
 }
 
 .quiz-link-text span {
@@ -128,41 +157,117 @@ font-size: 1.2rem;
   box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
 }
 
-
 .news-quiz-container h1 {
-  margin-left: 5%;
+  margin-left: 7%;
+  margin-top: 1%;
   font-size: 2.2rem;
-  margin-bottom: 4%;
+  margin-bottom: -1%;
+}
+
+
+.news-title-span {
+  color: rgb(255, 119, 119);
+  font-weight: bold;
+  font-size: 2.6rem;
 }
 
 .news-card {
   display: flex;
-  box-shadow: 0 0 0.5vw 0 rgb(217, 217, 217);
-  border-radius: 1.5rem;
-  padding: 5%;
-  margin: 1%;
+  align-items: center; /* Vertically center items */
+  box-shadow: 0 0 0.4vw 0 rgb(217, 217, 217);
+  border-radius: 1rem;
+  padding: 2.5%;
+  margin: 5%;
+  background: rgb(255, 234, 234, 0.2);
 }
 
 .news-card-img {
-  width: 35vw;
+  width: 30vw;
   height: auto;
-  padding: 3%;
+  /* Add margin if needed to adjust spacing */
 }
 
 .news-card-text {
-  padding: 3%;
+  padding: 4%;
+  /* Add margin or spacing as needed */
+  /* Ensure text content does not push the image out of alignment */
+}
+
+/* Additional styling for elements inside news-card-text */
+.news-card-text h2 {
+  font-size: 1.7rem;
+  margin-bottom: 2%;
+}
+
+.news-card-text p {
+  line-height: 1.5rem;
+  font-size: 1.1rem;
+  margin-right: 2%;
+  font-weight: 600;
+}
+
+.news-card-text h4 {
+  margin-bottom: 3%;
+  color: grey;
+  font-weight: 400;
+}
+
+.newscard-read-more {
+  color: rgb(255, 59, 59);
+  font-weight: 900;
+  margin-top: 1%;
+}
+
+.newscard-read-more:hover {
+  text-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+  color: rgb(255, 0, 43);
 }
 
 
+.newspage-container {
+  padding: 5%;
+}
+
+.newspage-back-button {
+  width: 10vw;
+  height: 6vh;
+  background-color:rgb(255, 119, 119);
+  border:none;
+  border-radius: 2vw;
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 5%;
+  margin-left:80%;
+}
+
+.newspage-container h1 {
+  margin: 0 5% 5% 0;
+  line-height: 3.2rem;
+  font-size: 2.5rem;
+}
+
+.newspage-container p {
+  line-height: 3rem;
+  color: grey;
+}
+
+.news-page-paragraph {
+  margin-bottom: 1%;
+}
 
 .news-page-img {
-  width: 80%;
+  width: 100%;
   height: auto;
 }
 
 .news-page-text {
   margin-top: 2%;
+  white-space: pre-line;
+  line-height: 1.8rem;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
+
 
 .news-weather-container {
   display: grid;
@@ -182,6 +287,7 @@ font-size: 1.2rem;
 .weather-container {
   width: 100%;
   margin-left: 2%;
+  box-sizing: border-box; /* Ensure padding and margins are included in the width calculation */
 }
 
 .weather-container h1 {
@@ -189,15 +295,17 @@ font-size: 1.2rem;
 }
 
 .weather-subcontainer {
-  padding: 3%;
+  padding: 9%;
+  box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
 }
 
 .weather-item {
   background: rgb(255, 234, 234, 0.2);
   border-radius: 10%;
-  box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+  box-shadow: 0 0 0.5vw 0 rgb(217, 217, 217);
   text-align: center;
-  padding: 10%;
+  padding: 15% 8%;
+  margin-top: 10%;
 }
 
 .weather-search-icon {
@@ -205,24 +313,32 @@ font-size: 1.2rem;
 }
 
 .city-input {
-  font-size: 100%;
-  margin: 2% 0;
-  border-radius: 5px;
+  width: 100%; /* Make the input take up the full width of its container */
+  max-width: 100%; /* Ensure it does not exceed the width of the container */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  font-size: 1rem;
+  border-radius: 1rem;
   border: rgb(255, 119, 119) solid 0.5px;
   background: rgb(255, 119, 119);
   color: white;
   font-weight: bold;
-  padding: 3%;
+  padding: 5%;
+}
+
+.weather-search-bar {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  align-items: center;
+  width: 100%; /* Make the search bar container responsive */
+  box-sizing: border-box; /* Include padding and border in the container's total width */
+  margin-bottom: 20%;
+  gap: 0.1rem;
 }
 
 .city-input::placeholder {
   color: white; 
   opacity: 1;
   font-weight: bold;
-}
-
-.weather-search-bar {
-  display: flex;
 }
 
 .weather-img {

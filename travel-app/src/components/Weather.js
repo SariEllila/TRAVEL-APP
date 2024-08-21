@@ -16,7 +16,7 @@ export default function Weather() {
 
     useEffect(() => {
         search(location);
-    }, []);
+    }, [location]);
 
     const search = async (city) => {
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=Metric&appid=${api_key}`;
@@ -35,7 +35,7 @@ export default function Weather() {
             } else if (data.weather[0].icon === "02d" || data.weather[0].icon === "02n") {
                 setWicon(rainsun);
             } else {
-                setWicon(sun);
+                setWicon(cloudsun);
             }
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -49,20 +49,25 @@ export default function Weather() {
 
     return (
         <div className="weather-container">
-        <div className="weather-item">
-            <div className="weather-top-bar">
-    <div className="weather-search-bar">
-  <input 
-    className="city-input" 
-    type="text" 
-    placeholder="Search City..."
-    value={inputValue}
-    onChange={(e) => setInputValue(e.target.value)}
-  />
-  <div>
-    <img src={searchIcon} alt="Search" onClick={handleSearch} className="weather-search-icon"/>
-  </div>
-</div>
+            <div className="weather-item">
+                <div className="weather-top-bar">
+                    <div className="weather-search-bar">
+                        <input 
+                            className="city-input" 
+                            type="text" 
+                            placeholder="Search City..."
+                            value={inputValue}
+                            onChange={(e) => setInputValue(e.target.value)}
+                        />
+                        <div>
+                            <img 
+                                src={searchIcon} 
+                                alt="Search" 
+                                onClick={handleSearch} 
+                                className="weather-search-icon"
+                            />
+                        </div>
+                    </div>
 
                     <div className="weather-location">
                         <h1>{location}</h1>
@@ -70,39 +75,41 @@ export default function Weather() {
                     <div className="weather-temp">
                         <h2>{temperature}</h2>
                     </div>
+                </div>
 
-            </div>
+                <div>
+                    <img 
+                        src={wicon} 
+                        alt="Weather icon" 
+                        className="weather-img" 
+                    />
+                </div>
 
-            <div>
-                <img src={wicon} alt="Weather icon" className="weather-img" />
-            </div>
-
-            <div className="data-container">
-                <div className="weather-element">
-                    <img src="" className="icon" alt="" />
-                    <div className="weather-data">
-                    <div className="weather-text">
-                            <h3>Humidity</h3>
+                <div className="data-container">
+                    <div className="weather-element">
+                        <img src="" className="icon" alt="" />
+                        <div className="weather-data">
+                            <div className="weather-text">
+                                <h3>Humidity</h3>
+                            </div>
+                            <div className="humidity-percentage">
+                                <h4>{humidity}</h4>
+                            </div>
                         </div>
-                        <div className="humidity-percentage">
-                            <h4>{humidity}</h4>
+                    </div>
+                    <div className="weather-element">
+                        <img src="" className="icon" alt="" />
+                        <div className="weather-data">
+                            <div className="weather-text">
+                                <h3>Wind Speed</h3>
+                            </div>
+                            <div className="wind-speed">
+                                <h4>{windSpeed}</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="weather-element">
-                    <img src="" className="icon" alt="" />
-                    <div className="weather-data">
-                    <div className="weather-text">
-                            <h3>Wind Speed</h3>
-                        </div>
-                        <div className="wind-speed">
-                            <h4>{windSpeed}</h4>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>    
+            </div>    
         </div>
     );
 }
