@@ -51,8 +51,7 @@ export default function Weather() {
         <div className="weather-container">
         <div className="weather-item">
             <div className="weather-top-bar">
-                <h2>How's the weather?</h2>
-                <div className="weather-search-bar">
+    <div className="weather-search-bar">
   <input 
     className="city-input" 
     type="text" 

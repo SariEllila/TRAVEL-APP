@@ -178,6 +178,7 @@ return (
     <Header />
     
     <div className="browse-dest">
+
       <h1 className="browse-dest-text">
         Browse <span className="light-coral" style={{ fontSize: '1.1em' }}>Destinations</span>
       </h1>
@@ -200,15 +201,18 @@ return (
       <button onClick={() => {handleScroll(item_width)}}>→</button>
     </div>
 
-    {showQuiz && (
-      <div>
-        {quizPage}
-        <button onClick={() => renderQuizResult()}>CHECK RESULTS</button>
+    <div className="quiz-container">
+        <div className="quiz-link-text">
+          <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
+          <h1 onClick={handleQuizClick}>
+            <span class="take-quiz-span"> Take the QUIZ</span>
+          </h1>
+        </div>
       </div>
-    )}
 
     <div className="news-weather-container">
       <div className="news-quiz-container">
+        <h1>NEWS <span class="news-title-span">Japan</span></h1>
         {!showQuiz && (
           <div>
             {selectedDestinationId && destPages}
@@ -218,15 +222,11 @@ return (
         )}
       </div>
 
-      <div className="quiz-container">
-      <Weather className="weather-container"/>
-        <div className="quiz-link-text">
-          <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
-          <h1 onClick={handleQuizClick}>
-            Take the <span style={{fontSize: "1.5em", fontWeight:"bolder"}}>QUIZ</span>
-          </h1>
-        </div>
+      <div className="weather-container">
+        <h1>How's the <span class="light-coral">Weather?</span></h1>
+        <Weather class="weather-subcontainer"/>
       </div>
+
     </div>
   </div>
 );

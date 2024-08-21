@@ -9,7 +9,7 @@
 }
 
 .banner-img {
-    max-width: 50%;
+    max-width: 30%;
     height: auto;
     display: block;
     padding-bottom: 1%;
@@ -17,7 +17,7 @@
 
 .browse-dest {
   border-top: solid rgb(156, 156, 156) 0.5px;
-  padding-top: 1.5%;
+  padding-top: 2.5%;
   width: 90%;
   display: grid;
   justify-content: start;
@@ -52,7 +52,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 
 .destcards-box {
@@ -72,20 +72,31 @@
 
 .dest-scroll-buttons button {
   font-size: 15px;
-  color: grey;
+  color: white;
+  font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
   border:none;
   transition: all 0.5s ease;
-  background-color: rgb(255, 248, 248);
+  background-color: rgb(255, 119, 119);
   border-radius: 50px;
   font-size: 1.5vw;
   font-family: 'arial';
 }
 
+.take-quiz-span {
+  font-size: 1.5rem;
+  transition: font-size 0.3s ease, text-shadow 0.3s;
+  font-weight: bolder;
+}
+
+.take-quiz-span:hover {
+  font-size: 1.6rem;
+  text-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+}
 
 .quiz-container {
-  width: 90%;
+  width: 100%;
 }
 
 .weather-container {
@@ -94,12 +105,16 @@
 
 .quiz-link-text {
   margin: 2% 4%;
-  padding: 2%;
+  padding: 1%;
   border: rgb(229, 230, 231) solid 0.1px;
   background-color: #FFFFFF;
   text-align: center;
-  line-height: 8vh;
+  line-height: 4vh;
   box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+}
+
+.quiz-link-text h1{
+font-size: 1.2rem;
 }
 
 .quiz-link-text span {
@@ -109,29 +124,40 @@
 
 
 .news-quiz-container {
-  border-right: 1px solid grey;
-  padding: 0 4% 0 0;
+  padding: 3%;
+  box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+}
+
+
+.news-quiz-container h1 {
+  margin-left: 5%;
+  font-size: 2.2rem;
+  margin-bottom: 4%;
 }
 
 .news-card {
   display: flex;
-  border-bottom: solid grey 1px;
-  padding: 5% 0;
+  box-shadow: 0 0 0.5vw 0 rgb(217, 217, 217);
+  border-radius: 1.5rem;
+  padding: 5%;
+  margin: 1%;
 }
 
 .news-card-img {
   width: 35vw;
   height: auto;
+  padding: 3%;
 }
 
 .news-card-text {
-  margin-right: 5%;
+  padding: 3%;
 }
 
+
+
 .news-page-img {
-  width: 70%;
+  width: 80%;
   height: auto;
-  margin-top: 2%;
 }
 
 .news-page-text {
@@ -141,36 +167,58 @@
 .news-weather-container {
   display: grid;
   grid-template-columns: 80% 20%; /* Two equal-width columns */
-  margin: 0 5%;
+  margin: 0 4%;
 }
 
 .news-quiz-container {
- color: blue;
+ margin-right: 2%;
 }
 
-
-
+.news-title-span {
+  color: rgb(255, 119, 119);
+  font-weight:bolder;
+}
 
 .weather-container {
   width: 100%;
+  margin-left: 2%;
+}
+
+.weather-container h1 {
+  margin: 3% 5% 5% 5%;
+}
+
+.weather-subcontainer {
+  padding: 3%;
 }
 
 .weather-item {
-  background: rgb(255, 234, 234);
+  background: rgb(255, 234, 234, 0.2);
   border-radius: 10%;
   box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
   text-align: center;
+  padding: 10%;
 }
 
 .weather-search-icon {
-  width: 2.5vw;
+  width: 80%;
 }
 
 .city-input {
   font-size: 100%;
   margin: 2% 0;
-  border-radius: 2%;
-  border: grey solid 0.5px;
+  border-radius: 5px;
+  border: rgb(255, 119, 119) solid 0.5px;
+  background: rgb(255, 119, 119);
+  color: white;
+  font-weight: bold;
+  padding: 3%;
+}
+
+.city-input::placeholder {
+  color: white; 
+  opacity: 1;
+  font-weight: bold;
 }
 
 .weather-search-bar {
@@ -178,9 +226,10 @@
 }
 
 .weather-img {
-  max-width: 40%;
+  max-width: 50%;
   height: auto;
   display: block;
+  margin-top: 5%;
 }
 
 
