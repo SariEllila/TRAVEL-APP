@@ -4,7 +4,7 @@ const NewsCard = (props) => {
 
     let truncatedText = '';
     if (props.text) {
-        truncatedText = props.text.substring(0, 500);
+        truncatedText = props.text.substring(0, 300);
     }
     
     return (

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 import Header from './components/Header';
 import DestCards from './components/DestCards';
@@ -6,19 +6,20 @@ import DestPages from './components/DestPages';
 import DestinationsData from './DestinationsData';
 import Weather from './components/Weather';
 import NewsData from './NewsData';
-import NewsCards from './components/NewsCards';
+import NewsCards from './components/NewsCard';
 import Quiz from './components/Quiz';
 import QuizData from './QuizData';
 import NewsPages from './components/NewsPages';
-import Footer from './components/Footer'
+import Footer from './components/Footer';
 
 function App() {
   const [selectedDestinationId, setSelectedDestinationId] = useState(null);
   const [selectedNewsId, setSelectedNewsId] = useState(null);
   const [showQuiz, setShowQuiz] = useState(false);
-  const [viewType, setViewType] = useState(''); // New state to manage the view type (destinations, news, quiz)
+  const [viewType, setViewType] = useState(''); // Manage the view type
   const [showQuizContainer, setShowQuizContainer] = useState(true);
   const [savedAnswers, setSavedAnswers] = useState([]);
+  const [quizResult, setQuizResult] = useState(null);
 
   function handleDestClick(id) {
     setSelectedDestinationId(id);
@@ -50,10 +51,34 @@ function App() {
 
   function saveAnswers(answer) {
     setSavedAnswers(prevAnswers => [...prevAnswers, answer]);
-    console.log(savedAnswers);
   }
 
-  // Data and component setup
+  function handleQuizCompletion() {
+    const result = calculateResult(savedAnswers);
+    setQuizResult(result);
+  }
+
+  function calculateResult(answers) {
+    const frequency = {};
+    answers.forEach(answer => {
+      if (frequency[answer]) {
+        frequency[answer] += 1;
+      } else {
+        frequency[answer] = 1;
+      }
+    });
+    // Get the answer with the highest frequency
+    const maxFrequency = Math.max(...Object.values(frequency));
+    const result = Object.keys(frequency).find(key => frequency[key] === maxFrequency);
+    return result.replace('answer', ''); // Remove 'answer' prefix
+  }
+
+  function closeQuizResult() {
+    setQuizResult(null);
+    setShowQuiz(false);
+    setShowQuizContainer(true);
+  }
+
   const selectedDest = DestinationsData.find(item => item.id === selectedDestinationId);
   const selectedNews = NewsData.find(item => item.id === selectedNewsId);
 
@@ -99,19 +124,27 @@ function App() {
       title={selectedNews.title}
       date={selectedNews.date}
       text={selectedNews.text}
-      onBackToNews={handleBackToNews} // Pass the function as a prop
+      onBackToNews={handleBackToNews}
     />
   ) : null;
 
-  const quizPage = QuizData.map(item => (
-    <Quiz
-      QuizData={QuizData.length - 1}
-      key={item.id}
-      question={item.question}
-      answers={item.answers}
-      saveAnswers={saveAnswers}
-    />
-  ));
+  const quizPage = showQuiz ? (
+    <div className="quiz-container">
+      <Quiz
+        questions={QuizData}
+        saveAnswers={saveAnswers}
+        handleQuizCompletion={handleQuizCompletion}
+      />
+      {quizResult && (
+        <div className="quiz-result-modal">
+          <div className="quiz-result-content">
+            <h2>Your result: {quizResult}</h2>
+            <button onClick={closeQuizResult}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
+  ) : null;
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const containerRef = useRef();
@@ -202,6 +235,7 @@ function App() {
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );

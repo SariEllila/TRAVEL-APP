@@ -8,11 +8,11 @@
   font-weight:bolder;
 }
 
-.banner-img {
-    max-width: 45%;
-    height: auto;
-    display: block;
-    margin-bottom: -0.5%;
+.banner-container img {
+  max-width: 45%;
+  height: auto;
+  display: block;
+  margin-bottom: -0.5%;
 }
 
 .footer {
@@ -219,8 +219,8 @@
 }
 
 .newscard-read-more:hover {
-  text-shadow: 0 0 1vw 0 rgb(217, 217, 217);
-  color: rgb(255, 0, 43);
+  color: rgb(255, 0, 34);
+  font-weight: bold;
 }
 
 
@@ -238,6 +238,11 @@
   font-size: 1.2rem;
   margin-top: 5%;
   margin-left:80%;
+}
+
+.newspage-back-button:hover {
+  background:rgb(252, 63, 88);
+  font-weight: bold;
 }
 
 .newspage-container h1 {
@@ -299,6 +304,11 @@
   box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
 }
 
+.dest-page-subtitle {
+  font-size: 2rem;
+
+}
+
 .weather-item {
   background: rgb(255, 234, 234, 0.2);
   border-radius: 10%;
@@ -349,13 +359,20 @@
 }
 
 
+
+.dest-page {
+  margin: 3%;
+}
+
 .dest-page-img {
   width: 80%;
   margin-bottom: 1%;
 }
 
-.dest-page-title {
-  font-size: 4vw;
+.dest-page h1 {
+  font-size: 3vw;
+  margin-bottom: 3%;
+  margin-left: 0;
 }
 
 .dest-page-data {
@@ -365,6 +382,52 @@
 
 .dest-page-text {
   width: 100%;
-  margin-top: 3%;
+  margin-top: 2%;
   margin-bottom: 2%;
+  line-height: 2rem;
+}
+
+.dest-page-subtitle {
+  color: rgb(255, 119, 119);
+  font-weight:bolder;
+  line-height: 4rem;
+}
+
+
+
+.quiz-result-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.quiz-result-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.quiz-result-content h2 {
+  margin-bottom: 20px;
+}
+
+.quiz-result-content button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quiz-result-content button:hover {
+  background-color: #0056b3;
 }

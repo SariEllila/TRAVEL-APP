@@ -1,9 +1,15 @@
 import React from 'react';
 
 function NewsPages(props) {
+    // Function to format the text with line breaks for HTML rendering
     const formatTextWithLineBreaks = (text) => {
+        // Check if the text is a string
+        if (typeof text !== 'string') return '';
+
         // Split text into paragraphs and wrap each paragraph in a <div> with a class for indentation
-        return text.split('\n\n').map(paragraph => `<div class="news-page-paragraph">${paragraph}</div>`).join('');
+        return text.split('\n\n').map(paragraph => 
+            `<div class="news-page-paragraph">${paragraph}</div>`
+        ).join('');
     };
 
     return (
