@@ -91,14 +91,15 @@
   align-items: center;
   padding: 1% 0;
   margin: 0 45%;
+  margin-bottom: 3%;
 }
 
 .dest-scroll-buttons button {
-  color: white;
+  color: rgb(65, 65, 65);
   cursor: pointer;
   border: none;
   transition: transform 0.3s ease, background-color 0.3s ease;
-  background-color:rgb(255, 119, 119);
+  background-color:rgb(252, 225, 225);
   border-radius: 50%;
   font-size: 1.2vw;
   font-family: 'arial';
@@ -108,7 +109,7 @@
 
 .dest-scroll-buttons button:hover {
   transform: scale(1.05);
-  background-color: rgb(255, 59, 59);
+  background-color:#fd8888;
 }
 
 .take-quiz-span {
@@ -123,7 +124,7 @@
 }
 
 .quiz-container {
-  width: 100%;
+  width: 98%;
 }
 
 .weather-container {
@@ -155,6 +156,7 @@
 .news-quiz-container {
   padding: 3%;
   box-shadow: 0 0 1vw 0 rgb(217, 217, 217);
+  margin-right: 2%;
 }
 
 .news-quiz-container h1 {
@@ -277,12 +279,9 @@
 .news-weather-container {
   display: grid;
   grid-template-columns: 80% 20%; /* Two equal-width columns */
-  margin: 0 4%;
+  margin: 0 5%;
 }
 
-.news-quiz-container {
- margin-right: 2%;
-}
 
 .news-title-span {
   color: rgb(255, 119, 119);
@@ -291,7 +290,6 @@
 
 .weather-container {
   width: 100%;
-  margin-left: 2%;
   box-sizing: border-box; /* Ensure padding and margins are included in the width calculation */
 }
 
@@ -381,10 +379,11 @@
 }
 
 .dest-page-text {
-  width: 100%;
+  width: 80%;
   margin-top: 2%;
   margin-bottom: 2%;
   line-height: 2rem;
+  margin-left: 0;
 }
 
 .dest-page-subtitle {
@@ -394,19 +393,6 @@
 }
 
 
-
-.quiz-result-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
 
 .quiz-result-content {
   background: white;
@@ -430,4 +416,101 @@
 
 .quiz-result-content button:hover {
   background-color: #0056b3;
+}
+
+
+.quiz-main-container {
+  width: 100%;
+  margin-top: 8%;
+}
+
+.quiz-main-container h1 {
+  color: rgb(255, 119, 119);
+  font-weight:bolder;
+  margin-left: 0;
+  margin-bottom: 8%;
+}
+
+.answer-item {
+  margin-bottom: 1em;
+  padding: 1.2em;
+  border-radius: 10px;
+  background-color: rgb(255, 119, 119);
+  border: 1px solid #ddd;
+}
+
+.answer-item input[type="radio"] {
+  margin-right: 2em;
+}
+
+.answer-item label {
+  font-size: 1em;
+  color: white;
+  font-weight: bold;
+}
+
+/* Optional: Add styles for selected answer */
+.answer-item input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: white;
+}
+
+.quiz-next-button {
+  padding: 1rem 2rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5rem;
+  color: rgb(255, 119, 119);
+  margin: 5% 40%;
+  font-size: 1rem;
+  font-weight:900;
+transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.quiz-next-button:hover {
+  transform: scale(1.05)
+}
+
+.modal {
+  display: flex; /* Enable Flexbox */
+  flex-direction: column;
+  justify-content: center; /* Horizontally center the button */
+  align-items: center; /* Vertically center the button */
+  height: 50vh;
+}
+
+.modal h1 {
+  color: rgb(255, 119, 119);
+  text-align: center;
+  margin-top: 10%;
+  margin-right: 7.5%;
+}
+
+.modal-result-span {
+  color: rgb(255, 50, 50);
+  font-weight: 900;
+}
+
+.modal button {
+  padding: 1rem 3rem;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5rem;
+  color: rgb(255, 50, 50);
+  font-size: 1rem;
+  font-weight: 900;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  /* Remove margin to avoid uncentering */
+  margin-top: 20%;
+}
+
+.modal button:hover {
+  transform: scale(1.05)
+}
+
+/* Additional styles when viewType is 'quiz' */
+.news-quiz-container.quiz-view {
+  background-color: rgb(252, 225, 225); /* Example: change background color */
+  padding: 5% 30%;
+  /* Other quiz-specific styles */
 }

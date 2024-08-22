@@ -190,20 +190,20 @@ function App() {
                 </div>
             )}
 
-            <div className="news-weather-container">
-                <div className="news-quiz-container">
-                    {viewType === '' && (
-                        <h1>Japan <span className="news-title-span">News</span></h1>
-                    )}
-                    {viewType === 'destinations' && destPages}
-                    {viewType === 'news' && newsPages}
-                    {viewType === 'quiz' && quizPage}
-                    {!viewType && (
-                        <div>
-                            {newsCards}
-                        </div>
-                    )}
-                </div>
+<div className="news-weather-container">
+    <div className={`news-quiz-container ${viewType === 'quiz' ? 'quiz-view' : ''}`}>
+        {viewType === '' && (
+            <h1>Japan <span className="news-title-span">News</span></h1>
+        )}
+        {viewType === 'destinations' && destPages}
+        {viewType === 'news' && newsPages}
+        {viewType === 'quiz' && quizPage}
+        {!viewType && (
+            <div>
+                {newsCards}
+            </div>
+        )}
+</div>
 
                 <div className="weather-container">
                     <div className="weather-subcontainer">

@@ -57,15 +57,15 @@ export default function Quiz({ questions, saveAnswers, handleQuizCompletion, nav
         <div>
             {result ? (
                 <div className="modal">
-                    <h1>Your destination is {result}!</h1>
+                    <h1>Your destination is<span class="modal-result-span"> {result} </span>!</h1>
                     <button onClick={handleGoToDestinationClick}>Go to destination page</button>
                 </div>
             ) : (
-                <div>
+                <div class="quiz-main-container">
                     <h1>{questions[currentQuestionIndex].question}</h1>
                     <form>
                         {Object.entries(questions[currentQuestionIndex].answers).map(([key, answer], index) => (
-                            <div key={key}>
+                            <div key={key} className="answer-item">
                                 <input
                                     type="radio"
                                     id={`answer${index + 1}`}
@@ -78,7 +78,7 @@ export default function Quiz({ questions, saveAnswers, handleQuizCompletion, nav
                             </div>
                         ))}
                     </form>
-                    <button onClick={handleNextButtonClick}>
+                    <button onClick={handleNextButtonClick} class="quiz-next-button">
                         {currentQuestionIndex === questions.length - 1 ? "Finish Quiz" : "Next"}
                     </button>
                 </div>
