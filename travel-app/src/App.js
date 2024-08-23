@@ -16,37 +16,62 @@ function App() {
     const [selectedDestinationId, setSelectedDestinationId] = useState(null);
     const [selectedNewsId, setSelectedNewsId] = useState(null);
     const [showQuiz, setShowQuiz] = useState(false);
-    const [viewType, setViewType] = useState(''); // New state to manage the view type (destinations, news, quiz)
+    const [viewType, setViewType] = useState('');
     const [showQuizContainer, setShowQuizContainer] = useState(true);
     const [savedAnswers, setSavedAnswers] = useState([]);
     const [showNews, setShowNews] = useState(false);
 
+    const weatherRef = useRef(null); 
+    const newsRef = useRef(null); 
+    const quizRef = useRef(null); 
+
+    const scrollToSection = (section) => {
+        setViewType(section); // Set the viewType first
+
+        // Delay the scroll to ensure state update takes effect
+        setTimeout(() => {
+            if (section === 'news') {
+                if (newsRef.current) {
+                    newsRef.current.scrollIntoView({ behavior: 'instant' });
+                }
+            } else if (section === 'quiz') {
+                if (quizRef.current) {
+                    quizRef.current.scrollIntoView({ behavior: 'instant' });
+                }
+            } else if (section === 'weather') {
+                if (weatherRef.current) {
+                    weatherRef.current.scrollIntoView({ behavior: 'instant' });
+                }
+            }
+        }, 0); // A slight delay to allow viewType to update
+    };
+
     function handleDestClick(id) {
         setSelectedDestinationId(id);
-        setSelectedNewsId(null); // Reset selected news
-        setShowQuiz(false); // Hide quiz
-        setViewType('destinations'); // Set view to destinations
+        setSelectedNewsId(null); 
+        setShowQuiz(false); 
+        setViewType('destinations'); 
     }
 
     function handleNewsClick(id) {
         setSelectedNewsId(id);
-        setSelectedDestinationId(null); // Reset selected destination
-        setShowQuiz(false); // Hide quiz
-        setViewType('news'); // Set view to news
+        setSelectedDestinationId(null); 
+        setShowQuiz(false); 
+        setViewType('news'); 
     }
 
     function handleQuizClick() {
         setShowQuiz(true);
-        setSelectedDestinationId(null); // Reset selected destination
-        setSelectedNewsId(null); // Reset selected news
-        setViewType('quiz'); // Set view to quiz
+        setSelectedDestinationId(null); 
+        setSelectedNewsId(null); 
+        setViewType('quiz'); 
     }
 
     function handleBackToNews() {
-        setSelectedNewsId(null); // Reset selected news
-        setSelectedDestinationId(null); // Reset selected destination
-        setShowQuiz(false); // Hide quiz
-        setViewType(''); // Set view back to default
+        setSelectedNewsId(null); 
+        setSelectedDestinationId(null); 
+        setShowQuiz(false); 
+        setViewType(''); 
     }
 
     function saveAnswers(answer) {
@@ -54,13 +79,12 @@ function App() {
     }
 
     function navigateToDestination(cityName) {
-        // Find the destination ID based on the city name
         const destination = DestinationsData.find(item => item.city === cityName);
         if (destination) {
             setSelectedDestinationId(destination.id);
-            setSelectedNewsId(null); // Reset selected news
-            setShowQuiz(false); // Hide quiz
-            setViewType('destinations'); // Navigate to destination view
+            setSelectedNewsId(null); 
+            setShowQuiz(false); 
+            setViewType('destinations'); 
         } else {
             console.error('Destination not found for city:', cityName);
         }
@@ -111,7 +135,7 @@ function App() {
             title={selectedNews.title}
             date={selectedNews.date}
             text={selectedNews.text}
-            onBackToNews={handleBackToNews} // Pass the function as a prop
+            onBackToNews={handleBackToNews} 
         />
     ) : null;
 
@@ -208,16 +232,20 @@ function App() {
                             {newsCards}
                         </div>
                     )}
-            </div>
+                </div>
 
-                <div className="weather-container">
+                <div ref={weatherRef}>
                     <div className="weather-subcontainer">
                         <h1>How's the <span className="light-coral">Weather?</span></h1>
                         <Weather />
                     </div>
                 </div>
             </div>
-            <Footer />
+
+            <div className="weather-bottom-space">
+            </div>
+
+            <Footer onSectionClick={scrollToSection} />
         </div>
     );
 }

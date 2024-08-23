@@ -15,11 +15,15 @@
   margin-bottom: -0.5%;
 }
 
-.footer {
+.footer-web {
   display: flex;
   justify-content: flex-end; /* Aligns child elements to the right */
   align-items: center; /* Center items vertically (optional, if needed) */
   width: 100%; /* Ensure the footer takes up full width */
+}
+
+.footer-mobile {
+  display: none;
 }
 
 .footer h4 {
@@ -293,7 +297,7 @@
   box-sizing: border-box; /* Ensure padding and margins are included in the width calculation */
 }
 
-.weather-container h1 {
+.weather-subcontainer h1 {
   margin: 3% 5% 5% 5%;
 }
 
@@ -515,7 +519,9 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   /* Other quiz-specific styles */
 }
 
-
+.weather-bottom-space {
+  display: none;
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -570,7 +576,7 @@ transition: transform 0.3s ease, background-color 0.3s ease;
 
   .browse-dest h1 {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     margin-top: 3rem;
   }
 
@@ -579,8 +585,8 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   }
 
   .dest-cards-img {
-    width: 60vw;
-    height: 40vw;
+    width: 65vw;
+    height: 45vw;
   }
 
   .dest-cards-city {
@@ -608,7 +614,7 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   }
 
   .take-quiz-span {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .quiz-container {
@@ -616,7 +622,6 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   }
 
   .weather-container {
-    margin-bottom: 10%;
     margin-top: 7%;
   }
 
@@ -627,12 +632,13 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   }
 
   .quiz-link-text h1 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .news-quiz-container {
     padding: 5%;
     margin-right: 0;
+    margin-bottom: 10%;
   }
 
   .news-quiz-container h1 {
@@ -701,12 +707,17 @@ transition: transform 0.3s ease, background-color 0.3s ease;
     font-size: 2rem;
   }
 
+
   .weather-container h1 {
-    margin-bottom: 0 0 -10% 0;
+    margin:0 0 5% 0;
   }
 
   .weather-subcontainer {
-    padding: 10%;
+    margin-bottom: -10%;
+  }
+
+  .weather-subcontainer h1 {
+    margin: 3% 5% -10% 5%;
   }
 
   .weather-item {
@@ -721,6 +732,10 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   .city-input {
     font-size: 1rem;
     padding: 7%;
+  }
+
+  .weather-location h1 {
+    padding-bottom: 15%;
   }
 
   .weather-img {
@@ -794,5 +809,46 @@ transition: transform 0.3s ease, background-color 0.3s ease;
 
   .news-quiz-container.quiz-view {
     padding: 10%;
+  }
+
+  .footer-web {
+    display: none;
+  }
+
+  .footer {
+    background:#fd8888;
+    margin-top: 50%;
+  }
+
+  .footer-mobile {
+    display: flex;
+    flex-direction: row;
+    margin: 0 5%;
+    padding: 2% 0;
+  }
+
+  .footer-mobile img {
+    transition: transform 0.3s ease;
+  }
+
+  .footer-mobile img:hover {
+    transform: scale(1.05);
+  }
+
+  .footer-quizicon {
+    width: 10vw;
+  }
+
+  .footer-weathericon {
+    width: 10vw;
+  }
+
+  .footer-newsicon {
+    width: 10vw;
+  }
+
+  .weather-bottom-space {
+    display: block;
+    height:140px;
   }
 }
