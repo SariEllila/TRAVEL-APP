@@ -19,6 +19,7 @@ function App() {
     const [viewType, setViewType] = useState(''); // New state to manage the view type (destinations, news, quiz)
     const [showQuizContainer, setShowQuizContainer] = useState(true);
     const [savedAnswers, setSavedAnswers] = useState([]);
+    const [showNews, setShowNews] = useState(false);
 
     function handleDestClick(id) {
         setSelectedDestinationId(id);
@@ -152,6 +153,10 @@ function App() {
         }
     }, [scrollPosition]);
 
+    const handleShowNews = () => {
+        setShowNews(true);
+    };
+
     return (
         <div>
             <Header />
@@ -190,20 +195,20 @@ function App() {
                 </div>
             )}
 
-<div className="news-weather-container">
-    <div className={`news-quiz-container ${viewType === 'quiz' ? 'quiz-view' : ''}`}>
-        {viewType === '' && (
-            <h1>Japan <span className="news-title-span">News</span></h1>
-        )}
-        {viewType === 'destinations' && destPages}
-        {viewType === 'news' && newsPages}
-        {viewType === 'quiz' && quizPage}
-        {!viewType && (
-            <div>
-                {newsCards}
+            <div className="news-weather-container">
+                <div className={`news-quiz-container ${viewType === 'quiz' ? 'quiz-view' : ''}`}>
+                    {viewType === '' && (
+                        <h1>Japan <span className="news-title-span">News</span></h1>
+                    )}
+                    {viewType === 'destinations' && destPages}
+                    {viewType === 'news' && newsPages}
+                    {viewType === 'quiz' && quizPage}
+                    {!viewType && (
+                        <div>
+                            {newsCards}
+                        </div>
+                    )}
             </div>
-        )}
-</div>
 
                 <div className="weather-container">
                     <div className="weather-subcontainer">

@@ -1,15 +1,14 @@
 import React, { useRef, useEffect } from 'react';
 
 export default function DestPages(props) {
-    // Create a ref for the element to scroll into view
+
     const contentRef = useRef(null);
 
-    // Scroll to the content when the component mounts
     useEffect(() => {
         if (contentRef.current) {
             contentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-    }, []); // Empty dependency array means this effect runs once on mount
+    }, []); 
 
     return (
         <div className="dest-page" ref={contentRef}>
@@ -35,5 +34,6 @@ export default function DestPages(props) {
                 <span className="dest-page-subtitle">Sights:<br /></span>{props.popularSights}
             </h4>
         </div>
+
     );
 }

@@ -514,3 +514,285 @@ transition: transform 0.3s ease, background-color 0.3s ease;
   padding: 5% 30%;
   /* Other quiz-specific styles */
 }
+
+
+
+
+@media only screen and (max-width: 768px) {
+  * {
+    margin: 0 auto;
+    color: rgb(77, 76, 76);
+  }
+
+  .light-coral {
+    color: rgb(255, 119, 119);
+    font-weight: bolder;
+  }
+
+  .banner-container {
+    position: fixed;
+    background: white;
+    height: 3rem;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(189, 189, 189, 0.2);
+  }
+
+  .banner-container img {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: -0.5%;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding: 1vh 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    box-shadow: 0 2px 15px rgba(189, 189, 189, 1.5);
+}
+
+  .footer h4 {
+    font-size: 0.9rem;
+    margin: 3% 5%;
+  }
+
+  .browse-dest {
+    padding-top: 6%;
+    padding-bottom: 2%;
+    width: 100%;
+    display: grid;
+    justify-content: center;
+  }
+
+  .browse-dest h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-top: 3rem;
+  }
+
+  .dest-cards-item {
+    padding-top: 4%;
+  }
+
+  .dest-cards-img {
+    width: 60vw;
+    height: 40vw;
+  }
+
+  .dest-cards-city {
+    font-size: 1.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .destinations-scroll {
+    margin-top: 3%;
+  }
+
+  .destcards-box {
+    gap: 4%;
+  }
+
+  .dest-scroll-buttons {
+    margin: 0 30%;
+    margin-bottom: 5%;
+  }
+
+  .dest-scroll-buttons button {
+    font-size: 4vw;
+    width: 8vw;
+    height: 8vw;
+  }
+
+  .take-quiz-span {
+    font-size: 1.3rem;
+  }
+
+  .quiz-container {
+    width: 100%;
+  }
+
+  .weather-container {
+    margin-bottom: 10%;
+    margin-top: 7%;
+  }
+
+  .quiz-link-text {
+    margin: 5% 2%;
+    padding: 3%;
+    line-height: 3vh;
+  }
+
+  .quiz-link-text h1 {
+    font-size: 1.1rem;
+  }
+
+  .news-quiz-container {
+    padding: 5%;
+    margin-right: 0;
+  }
+
+  .news-quiz-container h1 {
+    margin-left: 0;
+    margin-top: 2%;
+    font-size: 1.8rem;
+    margin-bottom: 0;
+  }
+
+  .news-title-span {
+    font-size: 2.2rem;
+  }
+
+  .news-card {
+    flex-direction: column;
+    padding: 5%;
+    margin: 5% 0;
+  }
+
+  .news-card-img {
+    width: 100%;
+    margin-bottom: 3%;
+  }
+
+  .news-card-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .news-card-text p {
+    line-height: 1.3rem;
+    font-size: 1rem;
+  }
+
+  .news-card-text h4 {
+    margin-bottom: 2%;
+  }
+
+  .newspage-back-button {
+    width: 50vw;
+    height: 8vh;
+    font-size: 1rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .newspage-container h1 {
+    font-size: 2rem;
+    margin: 0 0 5% 0;
+    line-height: 2.5rem;
+  }
+
+  .newspage-container p {
+    line-height: 2rem;
+  }
+
+  .news-page-text {
+    line-height: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .news-weather-container {
+    grid-template-columns: 100%;
+  }
+
+  .news-title-span {
+    font-size: 2rem;
+  }
+
+  .weather-container h1 {
+    margin-bottom: 0 0 -10% 0;
+  }
+
+  .weather-subcontainer {
+    padding: 10%;
+  }
+
+  .weather-item {
+    padding: 20%;
+    margin-top: 20%;
+  }
+
+  .weather-search-bar {
+    grid-template-columns: 70% 30%;
+  }
+
+  .city-input {
+    font-size: 1rem;
+    padding: 7%;
+  }
+
+  .weather-img {
+    max-width: 100%;
+    margin-top: 10%;
+  }
+
+  .dest-page {
+    margin: 5%;
+  }
+
+  .dest-page-img {
+    width: 100%;
+    margin-bottom: 2%;
+  }
+
+  .dest-page h1 {
+    font-size: 2.5rem;
+  }
+
+  .dest-page-text {
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .dest-page-subtitle {
+    font-size: 1.8rem;
+  }
+
+  .quiz-result-content {
+    padding: 10%;
+  }
+
+  .quiz-result-content h2 {
+    margin-bottom: 10%;
+  }
+
+  .quiz-result-content button {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+
+  .quiz-main-container h1 {
+    margin-bottom: 5%;
+  }
+
+  .answer-item {
+    padding: 10%;
+    margin-bottom: 10%;
+  }
+
+  .quiz-next-button {
+    margin: 10% 25%;
+    font-size: 1.2rem;
+  }
+
+  .modal {
+    height: 60vh;
+  }
+
+  .modal h1 {
+    margin-top: 5%;
+    margin-right: 0;
+  }
+
+  .modal button {
+    padding: 15px 25px;
+    margin-top: 10%;
+  }
+
+  .news-quiz-container.quiz-view {
+    padding: 10%;
+  }
+}
