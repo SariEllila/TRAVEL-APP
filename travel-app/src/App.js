@@ -19,31 +19,23 @@ function App() {
     const [viewType, setViewType] = useState('');
     const [showQuizContainer, setShowQuizContainer] = useState(true);
     const [savedAnswers, setSavedAnswers] = useState([]);
-    const [showNews, setShowNews] = useState(false);
 
     const weatherRef = useRef(null); 
     const newsRef = useRef(null); 
     const quizRef = useRef(null); 
 
     const scrollToSection = (section) => {
-        setViewType(section); // Set the viewType first
-
-        // Delay the scroll to ensure state update takes effect
+        console.log("Setting viewType to:", section);  // Log viewType
+        setViewType(section);
         setTimeout(() => {
-            if (section === 'news') {
-                if (newsRef.current) {
-                    newsRef.current.scrollIntoView({ behavior: 'instant' });
-                }
-            } else if (section === 'quiz') {
-                if (quizRef.current) {
-                    quizRef.current.scrollIntoView({ behavior: 'instant' });
-                }
-            } else if (section === 'weather') {
-                if (weatherRef.current) {
-                    weatherRef.current.scrollIntoView({ behavior: 'instant' });
-                }
+            if (section === 'news' && newsRef.current) {
+                newsRef.current.scrollIntoView({ behavior: 'smooth' });
+            } else if (section === 'quiz' && quizRef.current) {
+                quizRef.current.scrollIntoView({ behavior: 'smooth' });
+            } else if (section === 'weather' && weatherRef.current) {
+                weatherRef.current.scrollIntoView({ behavior: 'smooth' });
             }
-        }, 0); // A slight delay to allow viewType to update
+        }, 100);
     };
 
     function handleDestClick(id) {
@@ -177,9 +169,6 @@ function App() {
         }
     }, [scrollPosition]);
 
-    const handleShowNews = () => {
-        setShowNews(true);
-    };
 
     return (
         <div>
@@ -228,10 +217,10 @@ function App() {
                     {viewType === 'news' && newsPages}
                     {viewType === 'quiz' && quizPage}
                     {!viewType && (
-                        <div>
-                            {newsCards}
-                        </div>
-                    )}
+    <div ref={newsRef}>
+        {newsCards}
+    </div>
+                )}
                 </div>
 
                 <div ref={weatherRef}>

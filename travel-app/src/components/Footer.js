@@ -17,16 +17,20 @@ export default function Footer({ onSectionClick }) {
                     onClick={() => onSectionClick('weather')} // Navigate to weather section
                     alt="Weather"
                 />
-                <img
-                    src={newsicon}
-                    className="footer-newsicon"
-                    onClick={() => onSectionClick('news')} // Navigate to news section
-                    alt="News"
-                />
+<img
+    src={newsicon}
+    className="footer-newsicon"
+    onClick={() => {
+        onSectionClick('news');
+    }} 
+    alt="News" 
+/>
                 <img
                     src={quizicon}
                     className="footer-quizicon"
-                    onClick={() => onSectionClick('quiz')} // Navigate to quiz section
+                    onClick={() => {
+                    onSectionClick('quiz');
+                    }} 
                     alt="Quiz"
                 />
             </div>

@@ -17,7 +17,7 @@ const NewsCard = (props) => {
             </div>
 
             <div>
-            <img src={props.img} alt="Image" className="news-card-img"/>
+            <img src={props.img} alt="imagery for the article" className="news-card-img"/>
             </div>
         </div>
     );
