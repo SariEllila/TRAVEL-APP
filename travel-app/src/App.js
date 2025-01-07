@@ -163,12 +163,12 @@ function App() {
         }
     }, 100);
 
+
     useEffect(() => {
         if (containerRef.current) {
             containerRef.current.scrollLeft = scrollPosition;
         }
     }, [scrollPosition]);
-
 
     return (
         <div>
@@ -198,8 +198,8 @@ function App() {
             </div>
 
             {showQuizContainer && !showQuiz && (
-                <div className="quiz-container">
-                    <div className="quiz-link-text">
+                <div className="quiz-container" ref={quizRef} id="quiz">
+                    <div className="quiz-link-text" id="weather">
                         <h1>Do you want to know which destination is best for <em>YOU?</em></h1>
                         <h1 onClick={handleQuizClick}>
                             <span className="take-quiz-span"> Take the QUIZ</span>
@@ -211,19 +211,19 @@ function App() {
             <div className="news-weather-container">
                 <div className={`news-quiz-container ${viewType === 'quiz' ? 'quiz-view' : ''}`}>
                     {viewType === '' && (
-                        <h1>Japan <span className="news-title-span">News</span></h1>
+                    <h1>Japan <span className="news-title-span">News</span></h1>
                     )}
                     {viewType === 'destinations' && destPages}
                     {viewType === 'news' && newsPages}
                     {viewType === 'quiz' && quizPage}
                     {!viewType && (
-    <div ref={newsRef}>
-        {newsCards}
-    </div>
+                    <div ref={newsRef} id="news">
+                    {newsCards}
+                </div>
                 )}
                 </div>
 
-                <div ref={weatherRef}>
+                <div ref={weatherRef} id="weather">
                     <div className="weather-subcontainer">
                         <h1>How's the <span className="light-coral">Weather?</span></h1>
                         <Weather />
