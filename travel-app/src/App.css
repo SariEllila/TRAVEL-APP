@@ -867,7 +867,4 @@ transition: transform 0.3s ease, background-color 0.3s ease;
     overflow: hidden;
   }
 
-  .footer-web {
-    display: none;
-  }
 }
